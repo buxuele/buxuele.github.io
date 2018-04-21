@@ -22,7 +22,7 @@
     <link rel="alternative" href="/atom.xml" title="Legend" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/logo.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -42,11 +42,11 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #3d2793"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="images/logo.jpg" class="js-avatar">
+			<img src="/img/logo.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">buxuele</a></h1>
@@ -67,15 +67,11 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">archives</a>
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
             
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
@@ -99,14 +95,14 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #3d2793"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="images/logo.jpg" class="js-avatar">
+				<img src="/img/logo.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">buxuele</h1>
@@ -159,27 +155,27 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="may_be_pictures-somePic" class="article article-type-may_be_pictures  article-index" itemscope itemprop="blogPost">
+    <article id="post-rename-files-with-python" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/21/somePic/">somePic</a>
+      <a class="article-title" href="/2018/04/21/rename-files-with-python/">rename_files_with_python</a>
     </h1>
   
 
         
-        <a href="/2018/04/21/somePic/" class="archive-article-date">
-  	<time datetime="2018-04-21T04:08:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
+        <a href="/2018/04/21/rename-files-with-python/" class="archive-article-date">
+  	<time datetime="2018-04-21T14:12:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="借鉴了别人的写法，稍微改下："><a href="#借鉴了别人的写法，稍微改下：" class="headerlink" title="借鉴了别人的写法，稍微改下："></a>借鉴了别人的写法，稍微改下：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> # -*- coding: utf-8 -*-</span><br><span class="line"># author: fanchuangwater  Administrator</span><br><span class="line"># time: 2018/4/21 20:28</span><br><span class="line"># description: 批量重命名文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">path_name = input(&quot;Your file path: &quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def rename_files(path_name):</span><br><span class="line">    i = 0</span><br><span class="line">    all_file = os.listdir(path_name)</span><br><span class="line"></span><br><span class="line">    for a in all_file:</span><br><span class="line">        print(a)</span><br><span class="line"></span><br><span class="line">        old_file = os.path.join(path_name, a)</span><br><span class="line">        print(old_file)</span><br><span class="line"></span><br><span class="line">        b = str(i) + a[-4:]</span><br><span class="line">        print(b)</span><br><span class="line"></span><br><span class="line">        new_file = os.path.join(path_name, b)</span><br><span class="line">        print(new_file)</span><br><span class="line"></span><br><span class="line">        os.rename(old_file, new_file)</span><br><span class="line">        print(&apos;***************&apos;)</span><br><span class="line">        i = i + 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">rename_files(path_name)</span><br></pre></td></tr></table></figure>
       
 
       
@@ -191,7 +187,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/21/somePic/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/04/21/rename-files-with-python/">展开全文 >></a>
         </p>
       
 
@@ -221,36 +217,32 @@
 
 
   
-    <article id="photo-my-pictures" class="article article-type-photo  article-index" itemscope itemprop="blogPost">
+    <article id="post-pic-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/21/my-pictures/">my pictures</a>
+      <a class="article-title" href="/2018/04/21/pic-test/">pic_test</a>
     </h1>
   
 
         
-        <a href="/2018/04/21/my-pictures/" class="archive-article-date">
-  	<time datetime="2018-04-21T03:45:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
+        <a href="/2018/04/21/pic-test/" class="archive-article-date">
+  	<time datetime="2018-04-21T11:14:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="plain-quote"><a href="#plain-quote" class="headerlink" title="plain quote"></a>plain quote</h2><blockquote><p>just some text </p>
-</blockquote>
-<h2 id="quote-from-some-one"><a href="#quote-from-some-one" class="headerlink" title="quote from some one"></a>quote from some one</h2><blockquote><p>It’s not about perfect. It’s about effort. And when you bring that effort every single day, that’s where transformation happens.that’s how change occurs.</p>
-<footer><strong>tumblr</strong><cite>nobody</cite></footer></blockquote>
-<h2 id="test-block-of-pictures"><a href="#test-block-of-pictures" class="headerlink" title="test block of pictures"></a>test block of pictures</h2><blockquote><footer><strong>@weibo</strong><cite><a href="http://wx4.sinaimg.cn/large/a31aaf56gy1fqjc8h9lugj21kw0zhn73.jpg" target="_blank" rel="noopener">wx4.sinaimg.cn/large/a31aaf56gy1fqjc8h9lugj21kw0zhn73.jpg</a></cite></footer></blockquote>
-<h2 id="test-codeblock-usual"><a href="#test-codeblock-usual" class="headerlink" title="test codeblock usual"></a>test codeblock usual</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">some code stays here </span><br></pre></td></tr></table></figure>
-<h2 id="test-codeblock-with-real-code"><a href="#test-codeblock-with-real-code" class="headerlink" title="test codeblock with real code"></a>test codeblock with real code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&apos;hello, stranger!&apos;)</span><br></pre></td></tr></table></figure>
-<h2 id="test-codeblock-with-real-code-1"><a href="#test-codeblock-with-real-code-1" class="headerlink" title="test codeblock with real code"></a>test codeblock with real code</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"blank_url"</span>&gt;</span>blank_url<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="test-codeblock-with-real-code-2"><a href="#test-codeblock-with-real-code-2" class="headerlink" title="test codeblock with real code"></a>test codeblock with real code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&apos;hello, stranger!&apos;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">here is some quote as well </span><br><span class="line">you can put quote and code</span><br></pre></td></tr></table></figure>
+        <h4 id="test-some-thing-about-markdown"><a href="#test-some-thing-about-markdown" class="headerlink" title="test some thing about markdown"></a>test some thing about markdown</h4><ol>
+<li>插入网络图片测试01<br><img src="http://wx3.sinaimg.cn/large/a31aaf56ly1fqkbki17mvj20go09tmy3.jpg" alt="来自微博的一个图片"></li>
+</ol>
+<ol start="2">
+<li>本地图片测试02<br><img src="/2018/04/21/pic-test/1.jpg" alt="来自本地电脑磁盘上的图片1"><br><img src="/2018/04/21/pic-test/2.jpg" alt="来自本地电脑磁盘上的图片2"><br><img src="/2018/04/21/pic-test/3.jpg" alt="来自本地电脑磁盘上的图片3"><br><img src="/2018/04/21/pic-test/4.jpg" alt="来自本地电脑磁盘上的图片4"></li>
+</ol>
 
       
 
@@ -263,203 +255,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/21/my-pictures/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="psot-test02-eee" class="article article-type-psot  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/21/test02-eee/">test02_eee</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/21/test02-eee/" class="archive-article-date">
-  	<time datetime="2018-04-21T03:36:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>here is some test file </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/21/test02-eee/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-still-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/21/still-test/">still_test</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/21/still-test/" class="archive-article-date">
-  	<time datetime="2018-04-21T03:24:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/21/still-test/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/21/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/21/hello-world/" class="archive-article-date">
-  	<time datetime="2018-04-21T03:18:06.758Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/21/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/04/21/pic-test/">展开全文 >></a>
         </p>
       
 
@@ -540,11 +336,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
-      
-      
       
     
     
@@ -553,15 +345,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">archives</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -625,45 +413,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
 
     
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
-    
 
-    
-    	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
-  	  	
-    	</section>
     
   </div>
   
