@@ -155,6 +155,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-520aiohttp-bing01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/20/520aiohttp-bing01/">520aiohttp_bing01</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/20/520aiohttp-bing01/" class="archive-article-date">
+  	<time datetime="2018-05-20T14:21:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="用aiohttp-下载-bing壁纸（目前只能下7张）。也算是异步的一次小小的尝试了。"><a href="#用aiohttp-下载-bing壁纸（目前只能下7张）。也算是异步的一次小小的尝试了。" class="headerlink" title="用aiohttp 下载 bing壁纸（目前只能下7张）。也算是异步的一次小小的尝试了。"></a>用aiohttp 下载 bing壁纸（目前只能下7张）。也算是异步的一次小小的尝试了。</h4><p><img src="https://cn.bing.com/az/hprichbg/rb/FalcoPeregrinus_ZH-CN12522703608_1920x1080.jpg" alt="felcon"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># info: fanchuang  2018/5/20 19:35</span><br><span class="line"># 目的: </span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import time</span><br><span class="line">import re</span><br><span class="line">import click</span><br><span class="line">import asyncio</span><br><span class="line">import aiohttp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># url = &apos;https://cn.bing.com/HPImageArchive.aspx?format=js&amp;idx=0&amp;n=1&amp;nc=1526816726462&amp;pid=hp&apos;</span><br><span class="line"></span><br><span class="line">TODAY = time.strftime(&apos;%Y-%m-%d&apos;, time.localtime(time.time()))</span><br><span class="line">PATTERN = re.compile(r&apos;&apos;)</span><br><span class="line"></span><br><span class="line">async def getPic(url):</span><br><span class="line">    async with aiohttp.ClientSession() as session:</span><br><span class="line">        async with session.get(url) as resp:</span><br><span class="line">            json_file = await resp.json()</span><br><span class="line">            data = json_file[&apos;images&apos;]</span><br><span class="line">            for d in data:</span><br><span class="line">                pic_url = &apos;https://cn.bing.com&apos; + d[&apos;url&apos;]</span><br><span class="line">                click.echo(pic_url)</span><br><span class="line"></span><br><span class="line">        async with session.get(pic_url) as res:</span><br><span class="line">            with open(pic_url.split(&apos;/&apos;)[-1], &apos;wb&apos;) as f:</span><br><span class="line">                cont = await res.read()</span><br><span class="line">                f.write(cont)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    os.makedirs(&apos;必应壁纸&apos;, exist_ok=True)</span><br><span class="line">    os.chdir(&apos;必应壁纸&apos;)</span><br><span class="line">    loop = asyncio.get_event_loop()</span><br><span class="line">    urls = [&apos;https://cn.bing.com/HPImageArchive.aspx?format=js&amp;idx=%d&amp;n=1&amp;nc=1526823492560&amp;pid=hp&apos; % x for x in range(7)]</span><br><span class="line">    tasks = [getPic(url) for url in urls]</span><br><span class="line">    loop.run_until_complete(asyncio.gather(*tasks))</span><br><span class="line"></span><br><span class="line">    # print(TODAY)</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/20/520aiohttp-bing01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-510low" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -175,7 +238,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="阳台上的瓜苗啊。你注定是命途艰难啊。"><a href="#阳台上的瓜苗啊。你注定是命途艰难啊。" class="headerlink" title="阳台上的瓜苗啊。你注定是命途艰难啊。"></a>阳台上的瓜苗啊。你注定是命途艰难啊。</h4><h4 id="另外，下载，合并ts文件（初步版本）。"><a href="#另外，下载，合并ts文件（初步版本）。" class="headerlink" title="另外，下载，合并ts文件（初步版本）。"></a>另外，下载，合并ts文件（初步版本）。</h4><p><img src="/2018/05/10/510low/1.jpg" alt="plant"></p>
+        <h4 id="阳台上的瓜苗啊。你注定是命途艰难啊。"><a href="#阳台上的瓜苗啊。你注定是命途艰难啊。" class="headerlink" title="阳台上的瓜苗啊。你注定是命途艰难啊。"></a>阳台上的瓜苗啊。你注定是命途艰难啊。</h4><h4 id="另外，下载，合并ts文件（初步版本）。"><a href="#另外，下载，合并ts文件（初步版本）。" class="headerlink" title="另外，下载，合并ts文件（初步版本）。"></a>另外，下载，合并ts文件（初步版本）。</h4><p><img src="510low/1.jpg" alt="plant"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># author: fanchuangwater  Administrator</span><br><span class="line"># time: 2018/5/10 23:59</span><br><span class="line"># about: </span><br><span class="line"></span><br><span class="line"># 当前这是第一步，还有许多是需要完善的。针对一个站点来批量操作是下一步的任务。</span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">import subprocess</span><br><span class="line">import uuid</span><br><span class="line">import requests</span><br><span class="line">from multiprocessing.dummy import Pool</span><br><span class="line"></span><br><span class="line">video_url = &apos;&apos;</span><br><span class="line"></span><br><span class="line">url = &apos; &apos;</span><br><span class="line">filename = url.split(&apos;/&apos;)[-1]</span><br><span class="line">mp4_name = filename.split(&apos;.&apos;)[0]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 总想把前2个方法合成一个，目前是不行的。</span><br><span class="line">def get_m3u8File(url):</span><br><span class="line">    res = requests.get(url).content</span><br><span class="line">    with open(filename, &apos;wb&apos;) as f:</span><br><span class="line">        f.write(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_tsFile():</span><br><span class="line">    for i in open(filename, &apos;r&apos;):</span><br><span class="line">        if i.strip()[0] != &apos;#&apos;:</span><br><span class="line">            # ts_url = &apos; &apos; + i.strip()</span><br><span class="line">            ts_url = &apos; &apos; + i.strip()</span><br><span class="line">            # print(ts_url)</span><br><span class="line">            # yield ts_url</span><br><span class="line">            ts = requests.get(ts_url).content</span><br><span class="line">            with open(ts_url.split(&apos;/&apos;)[-1], &apos;wb&apos;) as g:</span><br><span class="line">                g.write(ts)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # get_m3u8File(url)</span><br><span class="line">    # get_tsFile()</span><br><span class="line"></span><br><span class="line">    # print(&quot;got all ts !&quot;)</span><br><span class="line">    #</span><br><span class="line">    cmd1 = &apos;copy /b *.ts &#123;&#125;.ts &apos;.format(mp4_name)</span><br><span class="line">    cmd2 = &apos;ffmpeg -i &#123;0&#125;.ts -vcodec copy -acodec copy &#123;1&#125;.mp4 &apos;.format(mp4_name, mp4_name)</span><br><span class="line">    cmd3 = &apos;del *.ts&apos;</span><br><span class="line">    cmd4 = &apos;del *.m3u8&apos;</span><br><span class="line"></span><br><span class="line">    # subprocess.call(cmd1, shell=True)</span><br><span class="line">    # subprocess.call(cmd2, shell=True)</span><br><span class="line">    #</span><br><span class="line">    subprocess.call(cmd3, shell=True)</span><br><span class="line">    subprocess.call(cmd4, shell=True)</span><br><span class="line">    # print(&apos;got mp4&apos;)</span><br></pre></td></tr></table></figure>
 
       
@@ -239,7 +302,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="下载今日头条图片（根据首页搜索结果）"><a href="#下载今日头条图片（根据首页搜索结果）" class="headerlink" title="下载今日头条图片（根据首页搜索结果）"></a>下载今日头条图片（根据首页搜索结果）</h4><h5 id="下一步是根据用户主页来写"><a href="#下一步是根据用户主页来写" class="headerlink" title="下一步是根据用户主页来写"></a>下一步是根据用户主页来写</h5><p><img src="/2018/05/05/505今日头条/1.jpg" alt="e.g"></p>
+        <h4 id="下载今日头条图片（根据首页搜索结果）"><a href="#下载今日头条图片（根据首页搜索结果）" class="headerlink" title="下载今日头条图片（根据首页搜索结果）"></a>下载今日头条图片（根据首页搜索结果）</h4><h5 id="下一步是根据用户主页来写"><a href="#下一步是根据用户主页来写" class="headerlink" title="下一步是根据用户主页来写"></a>下一步是根据用户主页来写</h5><p><img src="505今日头条/1.jpg" alt="e.g"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># author: fanchuangwater  Administrator</span><br><span class="line"># time: 2018/5/5 18:12</span><br><span class="line"></span><br><span class="line">import time</span><br><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line">from multiprocessing.dummy import Pool</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">0. 直接在内存中进行。不要再写入额外的文件了。</span><br><span class="line">1. 这个文件是再次测试 第一个版本的，试试 关键词为：“上海”</span><br><span class="line">2. 下一步是根据 某用户的主页来进行 </span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    &apos;cookie&apos;: &apos;tt_webid=6547250260123731469; WEATHER_CITY=%E5%8C%97%E4%BA%AC; UM_distinctid=162ed599746a00-037e0ac2fce924-3e3d510f-1fa400-162ed599747d46; _ga=GA1.2.844640822.1524400547; uuid=&quot;w:b3c29a34829040c0886a87fa70db15c6&quot;; tt_webid=6547250260123731469; __utma=24953151.844640822.1524400547.1525496653.1525496653.1; __utmz=24953151.1525496653.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); CNZZDATA1259612802=246391495-1524398248-https%253A%252F%252Fwww.google.com.hk%252F%7C1525500131; __tasessionId=1tf0k2dqa1525503020866&apos;,</span><br><span class="line">    &apos;user-agent&apos;: &apos;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.168 Safari/537.36&apos;</span><br><span class="line">&#125;</span><br><span class="line">kw = input(&apos;请输入关键词：&apos;)</span><br><span class="line">s = requests.Session()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#  1.给1页（1个url）, 拿到x个内容</span><br><span class="line">def getPics():</span><br><span class="line">    picLinks = []</span><br><span class="line">    for r in range(9):</span><br><span class="line">        u = &apos;https://www.toutiao.com/search_content/?offset=&apos; + str(</span><br><span class="line">            r * 20) + &apos;&amp;format=json&amp;keyword=%s&amp;autoload=true&amp;count=20&amp;cur_tab=3&amp;from=gallery&apos; % kw</span><br><span class="line"></span><br><span class="line">        wbdata = s.get(u, headers=headers)</span><br><span class="line">        data_json = wbdata.json()</span><br><span class="line">        data_20 = data_json[&apos;data&apos;]</span><br><span class="line"></span><br><span class="line">        for i in data_20:</span><br><span class="line">            if &apos;title&apos; in i:</span><br><span class="line">                for p in i[&apos;image_list&apos;]:</span><br><span class="line">                    # line = &apos;http:&apos; + p[&apos;url&apos;].replace(&apos;list&apos;, &apos;origin&apos;) + &apos;\n&apos;</span><br><span class="line">                    picLinks.append(&apos;http:&apos; + p[&apos;url&apos;].replace(&apos;list&apos;, &apos;origin&apos;))</span><br><span class="line"></span><br><span class="line">    return picLinks</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def download(url):</span><br><span class="line">    print(&quot;正在下载：&quot; + url)</span><br><span class="line">    pic = s.get(url).content</span><br><span class="line">    fn = url.split(&apos;/&apos;)[-1] + &apos;.jpg&apos;</span><br><span class="line">    with open(fn, &apos;wb&apos;) as f:</span><br><span class="line">        f.write(pic)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    begin = time.time()</span><br><span class="line">    os.makedirs(kw, exist_ok=True)</span><br><span class="line">    os.chdir(kw)</span><br><span class="line"></span><br><span class="line">    ok = getPics()</span><br><span class="line">    my_pool = Pool(20)</span><br><span class="line"></span><br><span class="line">    my_pool.map(download, ok)</span><br><span class="line">    my_pool.close()</span><br><span class="line">    my_pool.join()</span><br><span class="line"></span><br><span class="line">    print(&quot;下载完成了！总共消耗的时间是：&quot; + str(time.time() - begin))</span><br></pre></td></tr></table></figure>
       
 
@@ -302,7 +365,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="2件事，1是爬了一些nba-图片，2是决定以前的笔记不再管了，只是搞好现在的。"><a href="#2件事，1是爬了一些nba-图片，2是决定以前的笔记不再管了，只是搞好现在的。" class="headerlink" title="2件事，1是爬了一些nba 图片，2是决定以前的笔记不再管了，只是搞好现在的。"></a>2件事，1是爬了一些nba 图片，2是决定以前的笔记不再管了，只是搞好现在的。</h4><p><img src="/2018/05/05/505读书笔记03/1.png" alt="杜兰特"></p>
+        <h4 id="2件事，1是爬了一些nba-图片，2是决定以前的笔记不再管了，只是搞好现在的。"><a href="#2件事，1是爬了一些nba-图片，2是决定以前的笔记不再管了，只是搞好现在的。" class="headerlink" title="2件事，1是爬了一些nba 图片，2是决定以前的笔记不再管了，只是搞好现在的。"></a>2件事，1是爬了一些nba 图片，2是决定以前的笔记不再管了，只是搞好现在的。</h4><p><img src="505读书笔记03/1.png" alt="杜兰特"></p>
 <h4 id="读书笔记03"><a href="#读书笔记03" class="headerlink" title="读书笔记03"></a>读书笔记03</h4><pre><code>1. 据说有心理学研究发现，商业白领的性能力与其工作业绩相关。
 2. 一个苏格兰人送给一个妇女一只口红，他说：反正我能把口红要回来。
 3. 君子怕小人，活人怕死鬼，男人怕老婆。
@@ -376,7 +439,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="west-world-s2e2"><a href="#west-world-s2e2" class="headerlink" title="west world s2e2"></a>west world s2e2</h4><p><img src="/2018/04/30/430-west-world-season-2/01.png" alt="host girl"></p>
+        <h4 id="west-world-s2e2"><a href="#west-world-s2e2" class="headerlink" title="west world s2e2"></a>west world s2e2</h4><p><img src="430-west-world-season-2/01.png" alt="host girl"></p>
 
       
 
@@ -439,7 +502,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="尝试下载直播吧的图片-，还需要改进"><a href="#尝试下载直播吧的图片-，还需要改进" class="headerlink" title="尝试下载直播吧的图片 ，还需要改进"></a>尝试下载直播吧的图片 ，还需要改进</h4><p><img src="/2018/04/30/430zhiboba/1.png" alt="zhiboba"></p>
+        <h4 id="尝试下载直播吧的图片-，还需要改进"><a href="#尝试下载直播吧的图片-，还需要改进" class="headerlink" title="尝试下载直播吧的图片 ，还需要改进"></a>尝试下载直播吧的图片 ，还需要改进</h4><p><img src="430zhiboba/1.png" alt="zhiboba"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># author: fanchuangwater  Administrator</span><br><span class="line"># time: 2018/4/29 21:15</span><br><span class="line"># about:  尝试下载直播吧的图片</span><br><span class="line"># 这个 版本还需要再改进。。。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">import time</span><br><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">from multiprocessing.dummy import Pool</span><br><span class="line">from fake_useragent import UserAgent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">u = UserAgent()</span><br><span class="line"># url = &apos;https://tu.zhibo8.cc/home/album/40517/&apos;</span><br><span class="line">headers = &#123;</span><br><span class="line">    &apos;User-Agent&apos;: u.random</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">start_url = &apos;https://tu.zhibo8.cc/zuqiu/all/3&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 访问一个网页 ，返回 response</span><br><span class="line">def ask_page(url):</span><br><span class="line">    s = requests.Session()</span><br><span class="line">    page = s.get(url, headers=headers)</span><br><span class="line">    # print(page.status_code)</span><br><span class="line">    # print(page.encoding)</span><br><span class="line">    return page</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 找到网页中想要的链接，并返回</span><br><span class="line">def get_link(url):</span><br><span class="line"></span><br><span class="line">    page = ask_page(url)</span><br><span class="line">    soup = BeautifulSoup(page.text, &apos;lxml&apos;)</span><br><span class="line">    lis = soup.find_all(src=re.compile(&apos;imgcdn.zhibo8.cc&apos;))</span><br><span class="line"></span><br><span class="line">    print(len(lis))         # 17</span><br><span class="line">    for l in lis[1: -6]:</span><br><span class="line">        # print(l)</span><br><span class="line">        # print(l.get(&apos;src&apos;))</span><br><span class="line">        u = &apos;https:&apos; + l.get(&apos;src&apos;)[: -10] + l.get(&apos;src&apos;)[-4:]</span><br><span class="line">        # print(u)</span><br><span class="line"></span><br><span class="line">        yield u</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 下载图片</span><br><span class="line">def download(url):</span><br><span class="line">    print(&quot;正在下载：&quot; + url)</span><br><span class="line">    pic = ask_page(url).content  # 获取图片的内容</span><br><span class="line">    fn = url.split(&apos;/&apos;)[-1]</span><br><span class="line">    with open(fn, &apos;wb&apos;) as f:</span><br><span class="line">        f.write(pic)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">def feed(start_url):</span><br><span class="line">    full_pages = []</span><br><span class="line">    bo = ask_page(start_url)</span><br><span class="line">    soup = BeautifulSoup(bo.text, &apos;lxml&apos;)</span><br><span class="line">    ss = soup.find_all(href=re.compile(r&apos;/home/album/&apos;))</span><br><span class="line">    sss = ss[: -11]</span><br><span class="line"></span><br><span class="line">    for s in range(len(sss)):</span><br><span class="line">        if s % 2 == 0:</span><br><span class="line">            # print(s.get(&apos;href&apos;))</span><br><span class="line">            print(sss[s].get(&apos;href&apos;))</span><br><span class="line">            full_page = &apos;https://tu.zhibo8.cc&apos; + sss[s].get(&apos;href&apos;)</span><br><span class="line">            full_pages.append(full_page)</span><br><span class="line"></span><br><span class="line">    return full_pages</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 多线程下载</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # os.makedirs(&apos;z2&apos;, exist_ok=True)</span><br><span class="line">    os.chdir(&apos;z2&apos;)</span><br><span class="line"></span><br><span class="line">    start = time.time()</span><br><span class="line">    for url in feed(start_url):</span><br><span class="line">        lse = get_link(url)</span><br><span class="line"></span><br><span class="line">        pool = Pool(20)</span><br><span class="line">        pool.map(download, lse)</span><br><span class="line">        pool.close()</span><br><span class="line">        pool.join()</span><br><span class="line"></span><br><span class="line">    end = time.time()</span><br><span class="line">    print(&quot;下载完成！下载一共消耗的时间是：&quot; + str(end - start))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # ask_page(url)</span><br><span class="line">    # get_link(url)</span><br><span class="line"></span><br><span class="line">    # feed(start_url)</span><br></pre></td></tr></table></figure>
 
       
@@ -503,9 +566,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="女主角。"><a href="#女主角。" class="headerlink" title="女主角。"></a>女主角。</h4><p><img src="/2018/04/29/卫国勇士/01.png" alt="girl01"></p>
-<p><img src="/2018/04/29/卫国勇士/02.png" alt="girl02"></p>
-<p><img src="/2018/04/29/卫国勇士/03.png" alt="girl03"></p>
+        <h4 id="女主角。"><a href="#女主角。" class="headerlink" title="女主角。"></a>女主角。</h4><p><img src="卫国勇士/01.png" alt="girl01"></p>
+<p><img src="卫国勇士/02.png" alt="girl02"></p>
+<p><img src="卫国勇士/03.png" alt="girl03"></p>
 
       
 
@@ -568,8 +631,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="下雨了。对于发芽的种子是个好事。"><a href="#下雨了。对于发芽的种子是个好事。" class="headerlink" title="下雨了。对于发芽的种子是个好事。"></a>下雨了。对于发芽的种子是个好事。</h4><p><img src="/2018/04/23/423rain/1.jpg" alt="plant"></p>
-<p><img src="/2018/04/23/423rain/2.jpg" alt="plant"></p>
+        <h4 id="下雨了。对于发芽的种子是个好事。"><a href="#下雨了。对于发芽的种子是个好事。" class="headerlink" title="下雨了。对于发芽的种子是个好事。"></a>下雨了。对于发芽的种子是个好事。</h4><p><img src="423rain/1.jpg" alt="plant"></p>
+<p><img src="423rain/2.jpg" alt="plant"></p>
 
       
 
@@ -632,8 +695,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="阳台的花盆，放了一些种子。发芽了。"><a href="#阳台的花盆，放了一些种子。发芽了。" class="headerlink" title="阳台的花盆，放了一些种子。发芽了。"></a>阳台的花盆，放了一些种子。发芽了。</h4><p><img src="/2018/04/22/422plant01/0.jpg" alt="plant"></p>
-<p><img src="/2018/04/22/422plant01/1.jpg" alt="plant"></p>
+        <h4 id="阳台的花盆，放了一些种子。发芽了。"><a href="#阳台的花盆，放了一些种子。发芽了。" class="headerlink" title="阳台的花盆，放了一些种子。发芽了。"></a>阳台的花盆，放了一些种子。发芽了。</h4><p><img src="422plant01/0.jpg" alt="plant"></p>
+<p><img src="422plant01/1.jpg" alt="plant"></p>
 
       
 
@@ -738,74 +801,10 @@
 
 
   
-    <article id="post-pic-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/21/pic-test/">pic_test</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/21/pic-test/" class="archive-article-date">
-  	<time datetime="2018-04-21T11:14:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="test-some-thing-about-markdown"><a href="#test-some-thing-about-markdown" class="headerlink" title="test some thing about markdown"></a>test some thing about markdown</h4><ol>
-<li>插入网络图片测试01<br><img src="http://wx3.sinaimg.cn/large/a31aaf56ly1fqkbki17mvj20go09tmy3.jpg" alt="来自微博的一个图片"></li>
-</ol>
-<ol start="2">
-<li>本地图片测试02<br><img src="/2018/04/21/pic-test/1.jpg" alt="来自本地电脑磁盘上的图片1"><br><img src="/2018/04/21/pic-test/2.jpg" alt="来自本地电脑磁盘上的图片2"><br><img src="/2018/04/21/pic-test/3.jpg" alt="来自本地电脑磁盘上的图片3"><br><img src="/2018/04/21/pic-test/4.jpg" alt="来自本地电脑磁盘上的图片4"></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/21/pic-test/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
