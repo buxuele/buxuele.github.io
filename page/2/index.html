@@ -155,6 +155,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-430zhiboba" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/30/430zhiboba/">430zhiboba</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/30/430zhiboba/" class="archive-article-date">
+  	<time datetime="2018-04-29T16:07:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="尝试下载直播吧的图片-，还需要改进"><a href="#尝试下载直播吧的图片-，还需要改进" class="headerlink" title="尝试下载直播吧的图片 ，还需要改进"></a>尝试下载直播吧的图片 ，还需要改进</h4><p><img src="430zhiboba/1.png" alt="zhiboba"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># author: fanchuangwater  Administrator</span><br><span class="line"># time: 2018/4/29 21:15</span><br><span class="line"># about:  尝试下载直播吧的图片</span><br><span class="line"># 这个 版本还需要再改进。。。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import re</span><br><span class="line">import time</span><br><span class="line">import os</span><br><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">from multiprocessing.dummy import Pool</span><br><span class="line">from fake_useragent import UserAgent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">u = UserAgent()</span><br><span class="line"># url = &apos;https://tu.zhibo8.cc/home/album/40517/&apos;</span><br><span class="line">headers = &#123;</span><br><span class="line">    &apos;User-Agent&apos;: u.random</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">start_url = &apos;https://tu.zhibo8.cc/zuqiu/all/3&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 访问一个网页 ，返回 response</span><br><span class="line">def ask_page(url):</span><br><span class="line">    s = requests.Session()</span><br><span class="line">    page = s.get(url, headers=headers)</span><br><span class="line">    # print(page.status_code)</span><br><span class="line">    # print(page.encoding)</span><br><span class="line">    return page</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 找到网页中想要的链接，并返回</span><br><span class="line">def get_link(url):</span><br><span class="line"></span><br><span class="line">    page = ask_page(url)</span><br><span class="line">    soup = BeautifulSoup(page.text, &apos;lxml&apos;)</span><br><span class="line">    lis = soup.find_all(src=re.compile(&apos;imgcdn.zhibo8.cc&apos;))</span><br><span class="line"></span><br><span class="line">    print(len(lis))         # 17</span><br><span class="line">    for l in lis[1: -6]:</span><br><span class="line">        # print(l)</span><br><span class="line">        # print(l.get(&apos;src&apos;))</span><br><span class="line">        u = &apos;https:&apos; + l.get(&apos;src&apos;)[: -10] + l.get(&apos;src&apos;)[-4:]</span><br><span class="line">        # print(u)</span><br><span class="line"></span><br><span class="line">        yield u</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 下载图片</span><br><span class="line">def download(url):</span><br><span class="line">    print(&quot;正在下载：&quot; + url)</span><br><span class="line">    pic = ask_page(url).content  # 获取图片的内容</span><br><span class="line">    fn = url.split(&apos;/&apos;)[-1]</span><br><span class="line">    with open(fn, &apos;wb&apos;) as f:</span><br><span class="line">        f.write(pic)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#</span><br><span class="line">def feed(start_url):</span><br><span class="line">    full_pages = []</span><br><span class="line">    bo = ask_page(start_url)</span><br><span class="line">    soup = BeautifulSoup(bo.text, &apos;lxml&apos;)</span><br><span class="line">    ss = soup.find_all(href=re.compile(r&apos;/home/album/&apos;))</span><br><span class="line">    sss = ss[: -11]</span><br><span class="line"></span><br><span class="line">    for s in range(len(sss)):</span><br><span class="line">        if s % 2 == 0:</span><br><span class="line">            # print(s.get(&apos;href&apos;))</span><br><span class="line">            print(sss[s].get(&apos;href&apos;))</span><br><span class="line">            full_page = &apos;https://tu.zhibo8.cc&apos; + sss[s].get(&apos;href&apos;)</span><br><span class="line">            full_pages.append(full_page)</span><br><span class="line"></span><br><span class="line">    return full_pages</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 多线程下载</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # os.makedirs(&apos;z2&apos;, exist_ok=True)</span><br><span class="line">    os.chdir(&apos;z2&apos;)</span><br><span class="line"></span><br><span class="line">    start = time.time()</span><br><span class="line">    for url in feed(start_url):</span><br><span class="line">        lse = get_link(url)</span><br><span class="line"></span><br><span class="line">        pool = Pool(20)</span><br><span class="line">        pool.map(download, lse)</span><br><span class="line">        pool.close()</span><br><span class="line">        pool.join()</span><br><span class="line"></span><br><span class="line">    end = time.time()</span><br><span class="line">    print(&quot;下载完成！下载一共消耗的时间是：&quot; + str(end - start))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    # ask_page(url)</span><br><span class="line">    # get_link(url)</span><br><span class="line"></span><br><span class="line">    # feed(start_url)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/30/430zhiboba/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-卫国勇士" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
